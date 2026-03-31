@@ -1,0 +1,69 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+const navLinks = ["Inicio", "Sorteos", "Ganadores", "Cómo Participar", "Contacto"];
+
+const Header = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-border">
+      <div className="container flex items-center justify-between h-16">
+        <a href="#" className="text-2xl font-black tracking-tight">
+          <span className="text-primary glow-text-primary">LA</span>{" "}
+          <span className="text-foreground">JEFA</span>
+        </a>
+
+        <nav className="hidden md:flex items-center gap-1" aria-label="Navegación principal">
+          {navLinks.map((link) => (
+            <a key={link} href={`#${link.toLowerCase().replace(/ /g, "-")}`} className="pill-nav">
+              {link}
+            </a>
+          ))}
+        </nav>
+
+        <a href="#participar" className="hidden md:inline-flex btn-glow text-sm">
+          Participar Ahora
+        </a>
+
+        <button
+          className="md:hidden text-foreground p-2"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Abrir menú"
+        >
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="md:hidden overflow-hidden bg-card border-t border-border"
+          >
+            <nav className="flex flex-col p-4 gap-2" aria-label="Menú móvil">
+              {navLinks.map((link) => (
+                <a
+                  key={link}
+                  href={`#${link.toLowerCase().replace(/ /g, "-")}`}
+                  className="pill-nav text-center"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link}
+                </a>
+              ))}
+              <a href="#participar" className="btn-glow text-center mt-2 text-sm" onClick={() => setMobileOpen(false)}>
+                Participar Ahora
+              </a>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+};
+
+export default Header;
