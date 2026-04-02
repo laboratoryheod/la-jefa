@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import winner1 from "@/assets/winner-1.jpg";
@@ -15,10 +15,31 @@ const winners = [
 
 const Winners = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const animRef = useRef<number>();
+  const pausedRef = useRef(false);
 
   const scroll = (dir: number) => {
     scrollRef.current?.scrollBy({ left: dir * 280, behavior: "smooth" });
   };
+
+  const autoScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el || pausedRef.current) {
+      animRef.current = requestAnimationFrame(autoScroll);
+      return;
+    }
+    el.scrollLeft += 0.5;
+    // Loop back when reaching the end
+    if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 1) {
+      el.scrollLeft = 0;
+    }
+    animRef.current = requestAnimationFrame(autoScroll);
+  }, []);
+
+  useEffect(() => {
+    animRef.current = requestAnimationFrame(autoScroll);
+    return () => { if (animRef.current) cancelAnimationFrame(animRef.current); };
+  }, [autoScroll]);
 
   return (
     <section id="ganadores" className="py-20 bg-card/50">
@@ -43,7 +64,7 @@ const Winners = () => {
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          <div ref={scrollRef} className="flex gap-5 overflow-x-auto scrollbar-hide px-12 py-2 snap-x snap-mandatory" style={{ scrollbarWidth: "none" }}>
+          <div ref={scrollRef} onMouseEnter={() => (pausedRef.current = true)} onMouseLeave={() => (pausedRef.current = false)} className="flex gap-5 overflow-x-auto scrollbar-hide px-12 py-2 snap-x snap-mandatory" style={{ scrollbarWidth: "none" }}>
             {winners.map((w, i) => (
               <motion.div
                 key={i}
