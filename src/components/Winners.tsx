@@ -64,7 +64,7 @@ const Winners = () => {
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          <div ref={scrollRef} className="flex gap-5 overflow-x-auto scrollbar-hide px-12 py-2 snap-x snap-mandatory" style={{ scrollbarWidth: "none" }}>
+          <div ref={scrollRef} onMouseEnter={() => (pausedRef.current = true)} onMouseLeave={() => (pausedRef.current = false)} className="flex gap-5 overflow-x-auto scrollbar-hide px-12 py-2 snap-x snap-mandatory" style={{ scrollbarWidth: "none" }}>
             {winners.map((w, i) => (
               <motion.div
                 key={i}
