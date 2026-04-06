@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import mototaxiImg from "@/assets/mototaxi-prize.jpg";
 
+interface HeroProps {
+  onParticipateClick?: () => void;
+}
+
 const targetDate = new Date();
 targetDate.setDate(targetDate.getDate() + 12);
 
-const Hero = () => {
+const Hero = ({ onParticipateClick }: HeroProps) => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
   function getTimeLeft() {
@@ -25,7 +29,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+    <section id="inicio" className="relative min-h-screen flex items-center pt-48 overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-hero" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial opacity-60" />
@@ -65,9 +69,12 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <a href="#participar" className="btn-glow text-base animate-pulse-glow">
+              <button 
+                onClick={onParticipateClick}
+                className="btn-glow text-base animate-pulse-glow"
+              >
                 Comprar Ticket
-              </a>
+              </button>
               <a href="#premios" className="btn-glow-pink text-base">
                 Ver Premios
               </a>

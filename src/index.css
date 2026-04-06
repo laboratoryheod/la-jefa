@@ -6,49 +6,50 @@
 
 @layer base {
   :root {
-    --background: 233 54% 7%;
+    --background: 0 0% 5%;
     --foreground: 0 0% 100%;
 
-    --card: 222 47% 11%;
+    --card: 0 0% 10%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 222 47% 11%;
+    --popover: 0 0% 10%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 168 100% 48%;
-    --primary-foreground: 233 54% 7%;
+    --primary: 45 100% 50%;
+    --primary-foreground: 0 0% 5%;
 
-    --secondary: 330 100% 48%;
+    --secondary: 0 0% 20%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 215 28% 17%;
+    --accent: 0 0% 20%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 168 100% 48%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 45 100% 50%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 222 47% 11%;
+    --sidebar-background: 0 0% 10%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 168 100% 48%;
-    --sidebar-primary-foreground: 233 54% 7%;
-    --sidebar-accent: 215 28% 17%;
+    --sidebar-primary: 45 100% 50%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 20%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 217 33% 17%;
-    --sidebar-ring: 168 100% 48%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 45 100% 50%;
 
     /* Custom tokens */
-    --neon-glow: 0 0 20px hsl(168 100% 48% / 0.4), 0 0 40px hsl(168 100% 48% / 0.2);
-    --neon-glow-pink: 0 0 20px hsl(330 100% 48% / 0.4), 0 0 40px hsl(330 100% 48% / 0.2);
-    --card-highlight: 215 28% 17%;
+    --neon-glow: 0 0 20px hsl(45 100% 50% / 0.4), 0 0 40px hsl(45 100% 50% / 0.2);
+    --neon-glow-pink: 0 0 20px hsl(45 100% 50% / 0.4), 0 0 40px hsl(45 100% 50% / 0.2);
+    --neon-gold-glow: 0 0 20px hsl(45 100% 50% / 0.6), 0 0 40px hsl(45 100% 50% / 0.3);
+    --card-highlight: 0 0% 20%;
   }
 }
 
@@ -73,28 +74,32 @@
   }
 
   .glow-text-primary {
-    text-shadow: 0 0 20px hsl(168 100% 48% / 0.6);
+    text-shadow: 0 0 20px hsl(45 100% 50% / 0.6);
   }
 
   .glow-text-secondary {
-    text-shadow: 0 0 20px hsl(330 100% 48% / 0.6);
+    text-shadow: 0 0 20px hsl(45 100% 50% / 0.6);
+  }
+
+  .glow-text-gold {
+    text-shadow: 0 0 20px hsl(45 100% 50% / 0.8), 0 0 40px hsl(45 100% 50% / 0.4);
   }
 
   .bg-gradient-radial {
-    background: radial-gradient(ellipse at center, hsl(168 100% 48% / 0.08) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, hsl(45 100% 50% / 0.08) 0%, transparent 70%);
   }
 
   .bg-gradient-hero {
-    background: linear-gradient(180deg, hsl(233 54% 7%) 0%, hsl(222 47% 11%) 50%, hsl(233 54% 7%) 100%);
+    background: linear-gradient(180deg, hsl(0 0% 5%) 0%, hsl(0 0% 10%) 50%, hsl(0 0% 5%) 100%);
   }
 
   .glass {
     backdrop-filter: blur(16px) saturate(180%);
-    background: hsl(233 54% 7% / 0.8);
+    background: hsl(0 0% 5% / 0.8);
   }
 
   .neon-border {
-    border: 1px solid hsl(168 100% 48% / 0.3);
+    border: 1px solid hsl(45 100% 50% / 0.3);
   }
 }
 
@@ -105,7 +110,7 @@
   }
 
   .pill-nav:hover {
-    background: hsl(168 100% 48% / 0.1);
+    background: hsl(45 100% 50% / 0.1);
   }
 
   .btn-glow {
@@ -114,17 +119,17 @@
   }
 
   .btn-glow:hover {
-    box-shadow: 0 0 30px hsl(168 100% 48% / 0.6), 0 0 60px hsl(168 100% 48% / 0.3);
+    box-shadow: 0 0 30px hsl(45 100% 50% / 0.6), 0 0 60px hsl(45 100% 50% / 0.3);
     transform: translateY(-2px);
   }
 
   .btn-glow-pink {
     @apply px-6 py-3 rounded-full font-bold bg-secondary text-secondary-foreground transition-all duration-300;
-    box-shadow: var(--neon-glow-pink);
+    box-shadow: var(--neon-gold-glow);
   }
 
   .btn-glow-pink:hover {
-    box-shadow: 0 0 30px hsl(330 100% 48% / 0.6), 0 0 60px hsl(330 100% 48% / 0.3);
+    box-shadow: 0 0 30px hsl(45 100% 50% / 0.6), 0 0 60px hsl(45 100% 50% / 0.3);
     transform: translateY(-2px);
   }
 
@@ -133,17 +138,17 @@
   }
 
   .card-neon:hover {
-    border-color: hsl(168 100% 48% / 0.4);
-    box-shadow: 0 0 20px hsl(168 100% 48% / 0.1);
+    border-color: hsl(45 100% 50% / 0.4);
+    box-shadow: 0 0 20px hsl(45 100% 50% / 0.1);
   }
 }
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(168 100% 48% / 0.4), 0 0 40px hsl(168 100% 48% / 0.2);
+    box-shadow: 0 0 20px hsl(45 100% 50% / 0.4), 0 0 40px hsl(45 100% 50% / 0.2);
   }
   50% {
-    box-shadow: 0 0 30px hsl(168 100% 48% / 0.6), 0 0 60px hsl(168 100% 48% / 0.3), 0 0 80px hsl(168 100% 48% / 0.1);
+    box-shadow: 0 0 30px hsl(45 100% 50% / 0.6), 0 0 60px hsl(45 100% 50% / 0.3), 0 0 80px hsl(45 100% 50% / 0.1);
   }
 }
 

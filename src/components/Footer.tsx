@@ -1,11 +1,11 @@
 import { Facebook, Instagram, Music } from "lucide-react";
 
 const Footer = () => (
-  <footer className="border-t border-border py-12">
+  <footer id="contacto" className="border-t border-border py-12">
     <div className="container text-center">
       <a href="#" className="text-3xl font-black inline-block mb-6">
-        <span className="text-primary glow-text-primary">LA</span>{" "}
-        <span className="text-foreground">JEFA</span>
+        <span className="text-yellow-400 glow-text-gold">LA</span>{" "}
+        <span className="text-white">JEFA</span>
       </a>
 
       <div className="flex justify-center gap-4 mb-6">
