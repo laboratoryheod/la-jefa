@@ -29,7 +29,7 @@ const Hero = ({ onParticipateClick }: HeroProps) => {
   }, []);
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center pt-48 overflow-hidden">
+    <section id="inicio" className="relative min-h-screen flex items-center pt-24 md:pt-48 overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-hero" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial opacity-60" />

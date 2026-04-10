@@ -16,14 +16,14 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-border">
-      <div className="container flex items-center justify-between h-48">
-        <a href="#" className="flex items-center gap-6">
+      <div className="container flex items-center justify-between h-24 md:h-48">
+        <a href="#" className="flex items-center gap-2 md:gap-2">
           <img
             src={logoImg}
             alt="La Jefa - Premios y Lotería"
-            className="h-48 w-auto object-contain"
+            className="h-24 md:h-48 w-auto object-contain"
           />
-          <span className="text-6xl font-black tracking-tight">
+          <span className="text-2xl md:text-6xl font-black tracking-tight">
             <span className="text-yellow-400 glow-text-gold">LA</span>{" "}
             <span className="text-white">JEFA</span>
           </span>
